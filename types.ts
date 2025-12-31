@@ -1,4 +1,3 @@
-
 export interface Experience {
   company: string;
   location: string;
@@ -18,6 +17,7 @@ export interface Education {
   degree: string;
 }
 
+// Added ChatMessage interface to resolve error in components/AIResumeChat.tsx
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;

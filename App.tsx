@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
@@ -51,31 +50,31 @@ const App: React.FC = () => {
       <Navbar activeSection={activeSection} />
       
       <main className="relative z-10">
-        <section id="home">
+        <section id="home" className="scroll-mt-16">
           <Hero />
         </section>
         
         <div className="max-w-6xl mx-auto px-6 space-y-48 pb-32">
-          <section id="experience">
+          <section id="experience" className="scroll-mt-24">
             <Experience />
           </section>
 
-          <section id="skills">
+          <section id="skills" className="scroll-mt-24">
             <Skills />
           </section>
 
-          <section id="education">
+          <section id="education" className="scroll-mt-24">
             <Education />
           </section>
 
-          <section id="contact">
+          <section id="contact" className="scroll-mt-24">
             <Contact />
           </section>
         </div>
-      </main>
 
-      {/* AI Resume Chat Component */}
-      <AIResumeChat />
+        {/* AI Resume Chat Integration */}
+        <AIResumeChat />
+      </main>
 
       <footer className="py-20 border-t border-slate-900 bg-slate-950/50 text-center">
         <div className="mb-4 flex justify-center gap-6">

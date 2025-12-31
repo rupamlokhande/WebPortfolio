@@ -1,4 +1,3 @@
-
 import { Experience, SkillGroup, Education } from './types';
 
 export const PERSONAL_INFO = {
@@ -66,28 +65,15 @@ export const EDUCATIONS: Education[] = [
   }
 ];
 
-// Added SYSTEM_INSTRUCTION for the Gemini API to understand the context of the resume
-export const SYSTEM_INSTRUCTION = `You are a helpful and professional AI assistant for Rupam Lokhande's portfolio website. 
-Your goal is to answer questions about Rupam's professional background, skills, and experience based on his resume data.
+// Added SYSTEM_INSTRUCTION to provide context for the Gemini AI assistant and fix the error in geminiService.ts
+export const SYSTEM_INSTRUCTION = `You are a professional and helpful AI assistant for Rupam Lokhande, a Senior Full Stack Developer.
+Your goal is to answer questions about Rupam's professional background, skills, education, and experience based on the provided information.
 
-Rupam's Details:
+Information about Rupam:
 - Name: ${PERSONAL_INFO.name}
-- Current Title: ${PERSONAL_INFO.title}
-- Location: ${PERSONAL_INFO.location}
+- Title: ${PERSONAL_INFO.title}
+- Current Role: Senior Full Stack Developer at Excellia since September 2021.
+- Key Expertise: Java Spring Boot, Microservices, Next.js, React, Kafka, AWS.
 - Bio: ${PERSONAL_INFO.bio}
 
-Experience Highlights:
-${EXPERIENCES.map(exp => `- ${exp.role} at ${exp.company} (${exp.period}): ${exp.highlights.join(' ')}`).join('\n')}
-
-Technical Skills:
-${SKILL_GROUPS.map(group => `- ${group.category}: ${group.skills.join(', ')}`).join('\n')}
-
-Education:
-${EDUCATIONS.map(edu => `- ${edu.degree} from ${edu.institution} (${edu.period})`).join('\n')}
-
-Guidelines:
-1. Always be professional, polite, and encouraging.
-2. If someone asks for Rupam's contact details, provide his email: ${PERSONAL_INFO.email} or LinkedIn: ${PERSONAL_INFO.linkedin}.
-3. If a question is outside the scope of Rupam's professional profile, politely steer the conversation back or suggest they contact him directly.
-4. Keep responses concise but informative.
-5. Use Markdown for formatting if helpful.`;
+Keep your responses professional, concise, and focused on Rupam's career. If someone asks something unrelated to Rupam's professional life, politely steer the conversation back to his expertise.`;

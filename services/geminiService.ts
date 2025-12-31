@@ -2,12 +2,13 @@
 import { GoogleGenAI } from "@google/genai";
 import { SYSTEM_INSTRUCTION } from "../constants";
 
-// Correctly initialize GoogleGenAI using process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
+// Function to handle chat interaction with the Gemini API
 export const chatWithResume = async (message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[]) => {
   try {
-    // Correctly call generateContent with model, contents, and systemInstruction in config
+    // Create a fresh instance of GoogleGenAI before each request
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
+    // Call generateContent with the appropriate model and configuration
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: [
@@ -22,7 +23,7 @@ export const chatWithResume = async (message: string, history: { role: 'user' | 
       }
     });
 
-    // Access response.text directly (property, not a method)
+    // Access the text property directly from the response object
     return response.text || "I'm sorry, I couldn't process that request.";
   } catch (error) {
     console.error("Gemini API Error:", error);

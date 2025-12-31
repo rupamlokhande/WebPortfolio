@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { chatWithResume } from '../services/geminiService';
 import { ChatMessage } from '../types';
@@ -26,9 +25,9 @@ const AIResumeChat: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Prepare history for API
-    const history = messages.slice(1).map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user' as const,
+    // Fixed: Explicitly type history to match the 'user' | 'model' role requirement of the Gemini API
+    const history: { role: 'user' | 'model'; parts: { text: string }[] }[] = messages.slice(1).map(m => ({
+      role: (m.role === 'assistant' ? 'model' : 'user') as 'user' | 'model',
       parts: [{ text: m.content }]
     }));
 
